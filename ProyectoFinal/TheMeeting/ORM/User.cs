@@ -14,6 +14,12 @@ namespace TheMeeting.ORM
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Events = new HashSet<Event>();
+        }
+    
         public long Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -22,5 +28,8 @@ namespace TheMeeting.ORM
         public string Password { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

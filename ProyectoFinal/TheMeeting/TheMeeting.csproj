@@ -134,6 +134,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ORM\Event.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ORM\User.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

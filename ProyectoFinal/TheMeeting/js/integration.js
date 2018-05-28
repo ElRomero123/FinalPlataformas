@@ -59,14 +59,16 @@
                 $.ajax
                 (
                     {
-                        url: '../api/user?username=' + username,
+                        url: '../api/user?username=' + username + '&password=' + password,
                         type: 'GET',
                         contentType: "application/json;charset=utf-8",
 
                         success:
                         function (data)
                         {
-                            $("#result").text(data.Name + " " + data.LastName);
+                            $("#resultName").text(data.Name + " " + data.LastName);
+                            $("#resultUser").text(data.Username);
+                            $("#resultEmail").text(data.Email);
                         },
 
                         error:

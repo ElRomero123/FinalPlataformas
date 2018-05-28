@@ -16,20 +16,13 @@
       </head>
  
       <body>
-          <nav class="navbar navbar-light bg-light">
 
+
+          <nav class="navbar navbar-light bg-light">
               <blockquote class="blockquote text-center">
                   <h1 class="display-4"> The Meeting </h1>
                   <footer class="blockquote-footer"> Haz más fácil <cite title="Source Title">tus momentos especiales.</cite></footer>
               </blockquote>
-
-              <form class="form-inline">
-                  <input id="useridLogin" class="form-control mr-sm-2" type="search" placeholder="Usuario" aria-label="Search">
-                  <input id="passwordLogin" class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Search">
-                  <button id="login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Iniciar sesión</button>
-              </form>
-
-              <small class="text-muted" id="result">Nombre persona</small>
           </nav>
 
           <nav>
@@ -38,6 +31,13 @@
                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#eventos" role="tab" aria-controls="nav-profile" aria-selected="false">Mis eventos</a>
                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#peventos" role="tab" aria-controls="nav-contact" aria-selected="false">Eventos públicos</a>
               </div>
+          </nav>
+
+          <nav class="navbar navbar-light bg-light">
+              <small class="form-text text-muted">Información usuario</small>
+              <small id="resultName" class="form-text text-muted"></small>
+              <small id="resultUser" class="form-text text-muted"></small>
+              <small id="resultEmail" class="form-text text-muted"></small>
           </nav>
 
           <br />
@@ -54,9 +54,36 @@
                       </blockquote>
 
                       <br />
+                      <div class="accordion" id="accordionExample">
+                          <div class="card w-75 shadow-lg p-3 mb-5 bg-white rounded">
+                              <div class="card-body">
+                                  <h5 class="card-title">Iniciar sesión en TheMeeting</h5>
+                                  <p class="card-text">Si está registrado, empieza a usar The Meeting.</p>
+                                  <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-outline-primary my-2 my-sm-0">Seleccionar</a>
+                              </div>
+                          </div>
+
+                          <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                              <div class="form-group">
+                                  <label for="useridLogin">Username</label>
+                                  <input class="form-control" id="useridLogin">
+                                  <small class="form-text text-muted">Escriba su nombre de usuario.</small>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="passwordLogin">Contraseña</label>
+                                  <input class="form-control" id="passwordLogin" type="password">
+                                  <small class="form-text text-muted">Escriba su contraseña.</small>
+                              </div>
+
+                              <div class="form-group">
+                                  <button id="login" type="submit" class="btn btn-outline-info my-2 my-sm-0">Iniciar sesión</button>
+
+                              </div>
+                          </div>
+                      </div>
 
                       <div class="accordion" id="accordionExample1">
-
                           <div class="card w-75 shadow-lg p-3 mb-5 bg-white rounded">
                               <div class="card-body">
                                   <h5 class="card-title">Crear una cuenta de The Meeting</h5>

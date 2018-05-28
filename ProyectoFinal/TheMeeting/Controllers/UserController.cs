@@ -10,26 +10,26 @@ namespace TheMeeting.Controllers
     {
         private O.DBMeetingEntities dataBase = new O.DBMeetingEntities();
 
-        public M.User Get(M.Credential credential)
+        public M.User Get(string username, string password)
         {
             M.User user = new M.User();
 
-            var result =  from c in dataBase.Users
-                          where (c.Username == credential.Username)
-                          select new {c.Password, c.Name, c.LastName, c.Sex, c.Username, c.Phone, c.Email};
+            var result =  from u in dataBase.Users
+                          where (u.Username == username)
+                          select new {u.Password, u.Name, u.LastName, u.Sex, u.Username, u.Phone, u.Email};
 
             var item = result.ToArray()[0];
 
-            if (credential.Password == item.Password)
+            if(password == item.Password)
             {
-                user.Name = item.Name;
+                user.Name     = item.Name;
                 user.LastName = item.LastName;
-                user.Sex = item.Sex;
+                user.Sex      = item.Sex;
                 user.Username = item.Username;
-                user.Phone = item.Phone;
-                user.Email = item.Email;    
+                user.Phone    = item.Phone;
+                user.Email    = item.Email;
             }
-            
+
             return user;      
         }
 
