@@ -53,25 +53,20 @@
         (
             function ()
             {
-                var credential =
-                {
-                    username: $("#useridLogin").val(),
-                    password: $("#passwordLogin").val()
-                };
+                var username = $("#useridLogin").val();
+                var password = $("#passwordLogin").val();
 
                 $.ajax
                 (
                     {
-                        url: '../api/user',
+                        url: '../api/user?username=' + username,
                         type: 'GET',
-                        data: JSON.stringify(credential),
                         contentType: "application/json;charset=utf-8",
 
                         success:
                         function (data)
                         {
-                            $("#useridLabel").text(data.Name + " " + data.LastName);
-                            $("#nameLabel").text(data.Username); 
+                            $("#result").text(data.Name + " " + data.LastName);
                         },
 
                         error:
