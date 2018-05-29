@@ -14,22 +14,31 @@ namespace TheMeeting.Controllers
         {
             M.User user = new M.User();
 
-            var result =  from u in dataBase.Users
-                          where (u.Username == username)
-                          select new {u.Password, u.Name, u.LastName, u.Sex, u.Username, u.Phone, u.Email};
-
-            var item = result.ToArray()[0];
-
-            if(password == item.Password)
+            try
             {
-                user.Name     = item.Name;
-                user.LastName = item.LastName;
-                user.Sex      = item.Sex;
-                user.Username = item.Username;
-                user.Phone    = item.Phone;
-                user.Email    = item.Email;
+                var result = from u in dataBase.Users
+                             where (u.Username == username)
+                             select new { u.Id, u.Password, u.Name, u.LastName, u.Sex, u.Username, u.Phone, u.Email };
+
+                var item = result.ToArray()[0];
+
+                if (password == item.Password)
+                {
+                    user.Id = item.Id;
+                    user.Name = item.Name;
+                    user.LastName = item.LastName;
+                    user.Sex = item.Sex;
+                    user.Username = item.Username;
+                    user.Phone = item.Phone;
+                    user.Email = item.Email;
+                }
             }
 
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
             return user;      
         }
 

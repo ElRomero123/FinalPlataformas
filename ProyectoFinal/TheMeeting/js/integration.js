@@ -67,8 +67,48 @@
                         function (data)
                         {
                             $("#resultName").text(data.Name + " " + data.LastName);
-                            $("#resultUser").text(data.Username);
-                            $("#resultEmail").text(data.Email);
+                            $("#resultUsername").text(data.Username);
+                            $("#resultId").text(data.Id);
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+            }
+        );
+
+
+        $("#sendEvent").click
+        (
+            function ()
+            {
+                var meeting =
+                {
+                    name: $("#title").val(),
+                    description: $("#description").val(),
+                    idUser: parseInt($("#resultId").val()),
+                    public: false
+                };
+
+                $.ajax
+                (
+                    {
+                        url: '../api/event',
+                        type: 'POST',
+                        data: JSON.stringify(meeting),
+                        contentType: "application/json;charset=utf-8",
+
+                        success:
+                        function (data)
+                        {
+                            if (data.Status)
+                            {
+                                $("#stateCreation").text("Se ha creado un evento con éxito. ");
+                            }
                         },
 
                         error:
