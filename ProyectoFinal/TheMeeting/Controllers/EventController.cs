@@ -27,8 +27,8 @@ namespace TheMeeting.Controllers
                 Status = false
             };
 
-            try
-            {
+            //try
+            //{
                 #pragma warning disable CS0618 // El tipo o el miembro están obsoletos
                 AutoMapper.Mapper.CreateMap<M.Event, O.Event>();
                 #pragma warning restore CS0618 // El tipo o el miembro están obsoletos
@@ -36,12 +36,14 @@ namespace TheMeeting.Controllers
                 dataBase.Events.Add(objectEvent);
                 dataBase.SaveChanges();
                 reply.Status = true;
-            }
+            //}
 
+            /*
             catch (Exception ex)
             {
                 throw ex;
             }
+            */
 
             return reply;
         }

@@ -86,12 +86,17 @@
         (
             function ()
             {
+                var idUserString = $("#resultId").text();
+                var idUser = parseInt(idUserString);
+
+                alert(idUser);
+               
                 var meeting =
                 {
                     name: $("#title").val(),
                     description: $("#description").val(),
-                    idUser: parseInt($("#resultId").val()),
-                    public: false
+                    idUser: idUser,
+                    isPublic: 0
                 };
 
                 $.ajax

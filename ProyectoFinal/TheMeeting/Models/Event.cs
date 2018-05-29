@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public long IdUser { get; set; }
-        public bool Public { get; set; }
+        public int IdUser { get; set; }
+        public int IsPublic { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b0ea57aa6d846a3a023721af8dbd3fe" Name="Diagram1">
+      <Diagram DiagramId="41d39af01a68453ab454d6c3ce8c2c20" Name="Diagram1">
         <EntityTypeShape EntityType="DBMeetingModel.Event" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBMeetingModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DBMeetingModel.FK_Event_User" ManuallyRouted="false" />

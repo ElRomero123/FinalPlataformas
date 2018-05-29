@@ -14,11 +14,11 @@ namespace TheMeeting.ORM
     
     public partial class Event
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public long IdUser { get; set; }
-        public string Public { get; set; }
+        public int IdUser { get; set; }
+        public int IsPublic { get; set; }
     
         public virtual User User { get; set; }
     }
