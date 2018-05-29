@@ -66,6 +66,7 @@
                         success:
                         function (data)
                         {
+                            $("#titleUser").text("Información de usuario ");
                             $("#resultName").text(data.Name + " " + data.LastName);
                             $("#resultUsername").text(data.Username);
                             $("#resultId").text(data.Id);
@@ -113,6 +114,41 @@
                             if (data.Status)
                             {
                                 $("#stateCreation").text("Se ha creado un evento con éxito. ");
+                            }
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+            }
+        );
+
+
+        $("#restart").click
+        (
+            function()
+            {
+                var idUserString = $("#resultId").text();
+                var idUser = parseInt(idUserString);
+
+                $.ajax
+                (
+                    {
+                        url: '../api/event?id=' + idUser,
+                        type: 'GET',
+                        contentType: "application/json;charset=utf-8",
+
+                        success:
+                        function (data)
+                        {
+                            for (i = 0, i < data.Lenght, i++)
+                            {
+                                alert(data.Lenght);
+                                alert(data[i].name + " " + data[i].description);
                             }
                         },
 

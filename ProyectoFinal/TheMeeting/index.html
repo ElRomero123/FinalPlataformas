@@ -12,7 +12,6 @@
             <link rel="icon" href="img/reunion.ico" />
 
             <title>THE MEETING - Haz mas fácil tus momentos especiales.</title>
-
       </head>
  
       <body>
@@ -33,10 +32,10 @@
 
           <nav class="navbar navbar-light bg-light">
               <div class="form-group">
-                  <label>Información de usuario</label>
-                  <small id="resultName" class="form-text text-muted">Name</small>
-                  <small id="resultUsername" class="form-text text-muted">Username</small>
-                  <small id="resultId" class="form-text text-muted">Id</small>
+                  <label id="titleUser"></label>
+                  <small id="resultName" class="form-text text-muted"></small>
+                  <small id="resultUsername" class="form-text text-muted"></small>
+                  <small id="resultId" class="form-text text-muted"></small>
               </div>
           </nav>
 
@@ -53,7 +52,7 @@
                               <div class="card-body">
                                   <h5 class="card-title">Iniciar sesión en TheMeeting</h5>
                                   <p class="card-text">Si está registrado, empieza a usar The Meeting.</p>
-                                  <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-outline-primary my-2 my-sm-0">Seleccionar</a>
+                                  <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-outline-primary my-2 my-sm-0">Seleccionar</a>
                               </div>
                           </div>
 
@@ -252,6 +251,11 @@
                                   <div class="form-group">
                                       <button id="sendEvent" type="submit" class="btn btn-outline-info my-2 my-sm-0">Crear</button>
                                       <small id="stateCreation" class="form-text text-muted">Estado</small>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <button id="restart" type="submit" class="btn btn-outline-info my-2 my-sm-0">Actualizar</button>
+                                      <small class="form-text text-muted">Actualizar lista de eventos creados.</small>
                                   </div>
 
                                   <div class="list-group">
