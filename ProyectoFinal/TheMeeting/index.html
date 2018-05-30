@@ -25,8 +25,8 @@
           <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#inicio" role="tab" aria-controls="nav-home" aria-selected="true">Inicio</a>
-                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#eventos" role="tab" aria-controls="nav-profile" aria-selected="false">Mis eventos</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#peventos" role="tab" aria-controls="nav-contact" aria-selected="false">Eventos públicos</a>
+                  <a class="nav-item nav-link" id="privateEvents" data-toggle="tab" href="#eventos" role="tab" aria-controls="nav-profile" aria-selected="false">Mis eventos</a>
+                  <a class="nav-item nav-link" id="publicEvents" data-toggle="tab" href="#peventos" role="tab" aria-controls="nav-contact" aria-selected="false">Eventos públicos</a>
               </div>
           </nav>
 
@@ -36,6 +36,7 @@
                   <small id="resultName" class="form-text text-muted"></small>
                   <small id="resultUsername" class="form-text text-muted"></small>
                   <small id="resultId" class="form-text text-muted"></small>
+                  <small id="stateLoadEvents" class="form-text text-muted"></small>
               </div>
           </nav>
 
@@ -319,326 +320,36 @@
 
 
               <div class="tab-pane fade" id="eventos" role="tabpanel" aria-labelledby="nav-profile-tab">
-
                   <div class="container">
-
                       <blockquote class="blockquote">
-                          <p class="mb-0">Mis eventos</p>
-                          <footer class="blockquote-footer"><cite title="Source Title">Invitaciones por parte de otros usuarios.</cite></footer>
+                           <p class="mb-0">Mis eventos</p>
+                           <footer class="blockquote-footer"><cite title="Source Title">Invitaciones por parte de otros usuarios.</cite></footer>
                       </blockquote>
 
-                      <div class="row">
+                      <div class="form-group">
+                           <button type="submit" class="btn btn-outline-info my-2 my-sm-0">Actualizar</button>
+                           <small class="form-text text-muted">Clic aquí para actualizar las invitaciones hechas por otros miembros de la comunidad.</small>
+                      </div>
 
-                          <div class="col-md-4 ">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 1</p>
+                      <br />
 
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 2</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 3</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 4</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 5</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 6</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 7</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
+                      <div id="listPrivate" class="row">
                       </div>
                   </div>
               </div>
 
-
               <div class="tab-pane fade" id="peventos" role="tabpanel" aria-labelledby="nav-contact-tab">
-
                   <div class="container">
-
                       <blockquote class="blockquote">
                           <p class="mb-0">Eventos públicos</p>
                           <footer class="blockquote-footer"><cite title="Source Title">Eventos públicados por toda la comunidad.</cite></footer>
                       </blockquote>
 
-                      <div class="row">
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 1</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 2</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 3</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 4</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 5</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <div class="card mb-4 box-shadow">
-                                  <img class="card-img-top" src="img/evento.jpg">
-                                  <div class="card-body">
-                                      <p class="card-text">Evento 6</p>
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="btn-group">
-                                              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button>
-                                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button>
-                                          </div>
-                                      </div>
-
-                                      <br />
-
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <small class="text-muted" style="text-align:justify"> 7 de abril de 2018 a las 7:00 pm </small>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
+                      <div id="listPublic" class="row">
                       </div>
                   </div>
-              </div>
+               </div>
           </div>
-
-
 
           <div class="card text-center">
               <div class="card-body">
@@ -648,12 +359,10 @@
               </div>
           </div>
 
-
           <!-- Documentos de Bootstrap -->
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
 
           <!-- Documentos del jQuery -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
