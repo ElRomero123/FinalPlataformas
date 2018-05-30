@@ -71,7 +71,6 @@
                         function (data)
                         {
                             $("#loginStatus").text("Validación correcta. Revisar en el panel superior. ");
-
                             $("#titleUser").text("Información de usuario ");
                             $("#resultName").text(data.Name + " " + data.LastName);
                             $("#resultUsername").text(data.Username);
@@ -137,9 +136,9 @@
         );
 
 
-        $("#restart").click
+        $("#show").click
         (
-            function()
+            function ()
             {
                 var idUserString = $("#resultId").text();
                 var idUser = parseInt(idUserString);
@@ -155,11 +154,9 @@
                         function (data)
                         {
                             var i = 0;
-
                             while (i < data.NumberEvents)
                             {
-                                $("#listEvents").append('');
-                                //alert(data.Events[i].Name + " " + data.Events[i].Description);
+                                $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <input class="form-control" placeholder="Especificar el username"> <br /> <button type = "submit" id=' + (i) + 'class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div class="card-footer text-muted">' + data.Events[i].Id + '</div> </div> <br/>');
                                 i++;
                             }
                         },
@@ -171,6 +168,15 @@
                         }
                     }
                 );
+            }
+        );
+
+        $("#listEvents").on("click", ".btn",
+
+            function()
+            {
+                var id = $(this).attr("id");
+                alert(id);
             }
         );
     }

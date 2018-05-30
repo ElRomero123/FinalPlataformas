@@ -20,7 +20,7 @@ namespace TheMeeting.Controllers
         {
             var result = from e in dataBase.Events
                          where (e.IdUser == id)
-                         select new {e.Id, e.Name, e.Description, e.IsPublic};
+                         select new {e.Id, e.Name, e.Description, e.IsPublic, e.Date, e.Place, e.DateCreation};
 
             var items = result.ToArray();
 
@@ -32,10 +32,13 @@ namespace TheMeeting.Controllers
 
                 eventos[i] = new M.Event
                 {
-                    Id          = item.Id,
-                    Name        = item.Name,
-                    Description = item.Description,
-                    IsPublic    = item.IsPublic
+                    Id           = item.Id,
+                    Name         = item.Name,
+                    Description  = item.Description,
+                    IsPublic     = item.IsPublic,
+                    Date         = item.Date,
+                    Place        = item.Place,
+                    DateCreation = item.DateCreation
                 };
             }
 
