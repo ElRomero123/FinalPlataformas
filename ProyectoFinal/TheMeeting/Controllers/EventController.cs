@@ -16,11 +16,11 @@ namespace TheMeeting.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        public M.Event[] Get(int id)
+        public M.ReplyEvent Get(int id)
         {
             var result = from e in dataBase.Events
                          where (e.IdUser == id)
-                         select new {e.Name, e.Description, e.IsPublic};
+                         select new {e.Id, e.Name, e.Description, e.IsPublic};
 
             var items = result.ToArray();
 
@@ -32,13 +32,20 @@ namespace TheMeeting.Controllers
 
                 eventos[i] = new M.Event
                 {
-                    Name = item.Name,
+                    Id          = item.Id,
+                    Name        = item.Name,
                     Description = item.Description,
-                    IsPublic = item.IsPublic
+                    IsPublic    = item.IsPublic
                 };
             }
 
-            return eventos;
+            M.ReplyEvent reply = new M.ReplyEvent
+            {
+                Events       = eventos,
+                NumberEvents = eventos.Length
+            };
+
+            return reply;
         }
 
         public M.Reply Post(M.Event meeting)
@@ -47,6 +54,8 @@ namespace TheMeeting.Controllers
             {
                 Status = false
             };
+
+            meeting.DateCreation = DateTime.Now.ToString();
 
             try
             {

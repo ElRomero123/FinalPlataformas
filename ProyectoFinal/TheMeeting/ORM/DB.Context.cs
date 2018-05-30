@@ -26,6 +26,7 @@ namespace TheMeeting.ORM
         }
     
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<EventUser> EventUsers { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

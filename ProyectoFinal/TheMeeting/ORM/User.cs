@@ -18,6 +18,7 @@ namespace TheMeeting.ORM
         public User()
         {
             this.Events = new HashSet<Event>();
+            this.EventUsers = new HashSet<EventUser>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace TheMeeting.ORM
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EventUser> EventUsers { get; set; }
     }
 }

@@ -4,10 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="79969c20389b4accb01f25f2d1ac18ee" Name="Diagram1">
-        <EntityTypeShape EntityType="DBMeetingModel.Event" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="c56b665e56a6409bb9d9ada28358189d" Name="Diagram1">
+        <EntityTypeShape EntityType="DBMeetingModel.Event" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMeetingModel.EventUser" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBMeetingModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DBMeetingModel.FK_Event_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMeetingModel.FK_EventUser_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMeetingModel.FK_EventUser_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

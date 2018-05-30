@@ -52,7 +52,7 @@
                               <div class="card-body">
                                   <h5 class="card-title">Iniciar sesión en TheMeeting</h5>
                                   <p class="card-text">Si está registrado, empieza a usar The Meeting.</p>
-                                  <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-outline-primary my-2 my-sm-0">Seleccionar</a>
+                                  <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-outline-primary my-2 my-sm-0">Seleccionar</a>
                               </div>
                           </div>
 
@@ -71,7 +71,7 @@
 
                               <div class="form-group">
                                   <button id="login" type="submit" class="btn btn-outline-info my-2 my-sm-0">Iniciar sesión</button>
-
+                                  <small id="loginStatus" class="form-text text-muted"></small>
                               </div>
                           </div>
                       </div>
@@ -249,8 +249,20 @@
                                   </div>
 
                                   <div class="form-group">
+                                      <label for="date">Fecha</label>
+                                      <input class="form-control" id="date">
+                                      <small class="form-text text-muted">Escriba un texto donde se especifique la fecha en que se realizará el evento.</small>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="place">Lugar</label>
+                                      <input class="form-control" id="place">
+                                      <small class="form-text text-muted">Escriba un texto donde se especifique el lugar en que se realizará el evento.</small>
+                                  </div>
+
+                                  <div class="form-group">
                                       <button id="sendEvent" type="submit" class="btn btn-outline-info my-2 my-sm-0">Crear</button>
-                                      <small id="stateCreation" class="form-text text-muted">Estado</small>
+                                      <small id="stateCreation" class="form-text text-muted"></small>
                                   </div>
 
                                   <div class="form-group">
@@ -258,27 +270,35 @@
                                       <small class="form-text text-muted">Actualizar lista de eventos creados.</small>
                                   </div>
 
-                                  <div class="list-group">
+                                  <div id="listEvents" class="list-group">
 
-                                      <a class="list-group-item list-group-item-action flex-column align-items-start">
-                                          <div class="d-flex w-100 justify-content-between">
-                                              <h5 class="mb-1">Evento 1</h5>
-                                              <small>Creado por: XXX.</small>
+                                      <div class="card text-center">
+                                          <div class="card-header">Lugar y fecha del evento.</div>
+                                          <div class="card-body">
+                                              <h5 class="card-title">Título evento.</h5>
+                                              <p class="card-text">Descripción evento.</p>
+                                              <input class="form-control" placeholder="Especificar el username">
+                                              <br />
+                                              <button id="invite" type="submit" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button>
                                           </div>
-                                          <small>Creado Hace 3 días</small>
-                                          <p class="mb-1">Lugar: Hotel Dorado.</p>
-                                          <small>Fecha: 14 Julio 2018.</small>
-                                      </a>
+                                          <div class="card-footer text-muted">Fecha de creación del evento.</div>
+                                          <div class="card-footer text-muted">Id usuario.</div>
+                                      </div>
 
-                                      <a class="list-group-item list-group-item-action flex-column align-items-start">
-                                          <div class="d-flex w-100 justify-content-between">
-                                              <h5 class="mb-1">Evento 2</h5>
-                                              <small>Creado por: Anonimus123.</small>
+                                      <br />
+
+                                      <div class="card text-center">
+                                          <div class="card-header">Lugar y fecha del evento.</div>
+                                          <div class="card-body">
+                                              <h5 class="card-title">Título evento.</h5>
+                                              <p class="card-text">Descripción evento.</p>
+                                              <input class="form-control" placeholder="Especificar el username">
+                                              <br />
+                                              <button id="invite" type="submit" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button>
                                           </div>
-                                          <small>Creado Hace 5 semanas</small>
-                                          <p class="mb-1">Lugar: Plaza Central.</p>
-                                          <small>Fecha: 19 de Agosto de 2019.</small>
-                                      </a>
+                                          <div class="card-footer text-muted">Fecha de creación del evento.</div>
+                                          <div class="card-footer text-muted">Id usuario.</div>
+                                      </div>
 
                                   </div>
 

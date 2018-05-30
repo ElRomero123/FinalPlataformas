@@ -5,6 +5,8 @@
         (
             function ()
             {
+                $("#state").text("Registrando usuario... Espere un momento. ");
+
                 var user =
                 {
                     name:       $("#names").val(),
@@ -53,6 +55,8 @@
         (
             function ()
             {
+                $("#loginStatus").text("Validando...");
+
                 var username = $("#useridLogin").val();
                 var password = $("#passwordLogin").val();
 
@@ -66,6 +70,8 @@
                         success:
                         function (data)
                         {
+                            $("#loginStatus").text("Validación correcta. Revisar en el panel superior. ");
+
                             $("#titleUser").text("Información de usuario ");
                             $("#resultName").text(data.Name + " " + data.LastName);
                             $("#resultUsername").text(data.Username);
@@ -87,17 +93,20 @@
         (
             function ()
             {
+                $("#stateCreation").text("Creando evento... ");
+
                 var idUserString = $("#resultId").text();
                 var idUser = parseInt(idUserString);
 
-                alert(idUser);
-               
                 var meeting =
                 {
                     name: $("#title").val(),
                     description: $("#description").val(),
                     idUser: idUser,
-                    isPublic: 0
+                    isPublic: 0,
+                    date: $("#date").val(),
+                    place: $("#place").val(),
+                    dateCreation: null
                 };
 
                 $.ajax
@@ -145,10 +154,13 @@
                         success:
                         function (data)
                         {
-                            for (i = 0, i < data.Lenght, i++)
+                            var i = 0;
+
+                            while (i < data.NumberEvents)
                             {
-                                alert(data.Lenght);
-                                alert(data[i].name + " " + data[i].description);
+                                $("#listEvents").append('');
+                                //alert(data.Events[i].Name + " " + data.Events[i].Description);
+                                i++;
                             }
                         },
 

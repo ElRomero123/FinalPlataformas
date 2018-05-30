@@ -14,6 +14,17 @@
           <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IsPublic" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Place" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DateCreation" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUserInvited" Type="int" Nullable="false" />
+          <Property Name="IdEvent" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -42,12 +53,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EventUser_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventUser">
+              <PropertyRef Name="IdEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventUser">
+              <PropertyRef Name="IdUserInvited" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBMeetingModelStoreContainer">
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventUser" EntityType="Self.EventUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Event_User" Association="Self.FK_Event_User">
             <End Role="User" EntitySet="User" />
             <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventUser_Event" Association="Self.FK_EventUser_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventUser" EntitySet="EventUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventUser_User" Association="Self.FK_EventUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="EventUser" EntitySet="EventUser" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -64,7 +108,21 @@
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="IsPublic" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Place" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Event_User" FromRole="Event" ToRole="User" />
+          <NavigationProperty Name="EventUsers" Relationship="Self.FK_EventUser_Event" FromRole="Event" ToRole="EventUser" />
+        </EntityType>
+        <EntityType Name="EventUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserInvited" Type="Int32" Nullable="false" />
+          <Property Name="IdEvent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_EventUser_Event" FromRole="EventUser" ToRole="Event" />
+          <NavigationProperty Name="User" Relationship="Self.FK_EventUser_User" FromRole="EventUser" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -79,6 +137,7 @@
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Event_User" FromRole="User" ToRole="Event" />
+          <NavigationProperty Name="EventUsers" Relationship="Self.FK_EventUser_User" FromRole="User" ToRole="EventUser" />
         </EntityType>
         <Association Name="FK_Event_User">
           <End Role="User" Type="Self.User" Multiplicity="1">
@@ -94,12 +153,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EventUser_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventUser">
+              <PropertyRef Name="IdEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventUser">
+              <PropertyRef Name="IdUserInvited" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBMeetingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="EventUsers" EntityType="Self.EventUser" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Event_User" Association="Self.FK_Event_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventUser_Event" Association="Self.FK_EventUser_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="EventUser" EntitySet="EventUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventUser_User" Association="Self.FK_EventUser_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EventUser" EntitySet="EventUsers" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -116,6 +208,18 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventUsers">
+            <EntityTypeMapping TypeName="DBMeetingModel.EventUser">
+              <MappingFragment StoreEntitySet="EventUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUserInvited" ColumnName="IdUserInvited" />
+                <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
