@@ -5,6 +5,8 @@
         (
             function ()
             {
+                $("#state").removeClass("badge badge-pill badge-success");
+                $("#state").addClass("badge badge-pill badge-warning");
                 $("#state").text("Registrando usuario... Espere un momento. ");
                 
 
@@ -58,6 +60,8 @@
         (
             function ()
             {
+                $("#loginStatus").removeClass("badge badge-pill badge-success");
+                $("#loginStatus").addClass("badge badge-pill badge-warning");
                 $("#loginStatus").text("Validando...");
 
                 var username = $("#useridLogin").val();
@@ -97,6 +101,8 @@
         (
             function ()
             {
+                $("#stateCreation").removeClass("badge badge-pill badge-success");
+                $("#stateCreation").addClass("badge badge-pill badge-warning");
                 $("#stateCreation").text("Creando evento... ");
 
                 var idUserString = $("#resultId").text();
@@ -107,7 +113,7 @@
                     name: $("#title").val(),
                     description: $("#description").val(),
                     idUser: idUser,
-                    isPublic: 0,
+                    isPublic: $('input:radio[name=typeEvent]:checked').val(),
                     date: $("#date").val(),
                     place: $("#place").val(),
                     dateCreation: null
@@ -129,6 +135,12 @@
                                 $("#stateCreation").removeClass("badge badge-pill badge-warning");
                                 $("#stateCreation").addClass("badge badge-pill badge-success");
                                 $("#stateCreation").text("Se ha creado un evento con éxito. ");
+                            }
+                            else
+                            {
+                                $("#stateCreation").removeClass("badge badge-pill badge-warning");
+                                $("#stateCreation").addClass("badge badge-pill badge-danger");
+                                $("#stateCreation").text("No se pudo crear el evento. ");
                             }
                         },
 
@@ -164,7 +176,16 @@
                             var i = 0;
                             while (i < data.NumberEvents)
                             {
-                                $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].Id + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
+                                if (data.Events[i].IsPublic == 0)
+                                {
+                                    $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].Id + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
+                                }
+
+                                else
+                                {
+                                    $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <p class="card-text">Evento Público</p> <br /> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
+                                }
+                                
                                 i++;
                             }
                         },
@@ -212,6 +233,7 @@
 
                             else
                             {
+                                $("#S" + id).text("Error al invitar el usuario. Es posible que ya lo haya invitado. ");
                             }
                         },
 
@@ -230,6 +252,8 @@
         (
             function ()
             {
+                $("#stateLoadEvents").removeClass("badge badge-pill badge-success");
+                $("#stateLoadEvents").addClass("badge badge-pill badge-warning");
                 $("#stateLoadEvents").text("Cargando eventos ...");
                 var idUserString = $("#resultId").text();
                 var idUser = parseInt(idUserString);
@@ -248,10 +272,47 @@
                             var i = 0;
                             while (i < data.SizeReplies)
                             {
-                                $("#listPrivate").append('<div class="col-md-4"> <div class="card mb-4 box-shadow"> <img class="card-img-top" src="img/evento.jpg"> <div class="card-body"> <p class="card-text">' + data.Replies[i].Title + '</p> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Description + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateEvent + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Place + '</small> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <div class="btn-group"> <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button> </div> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateCreation + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Creator + '</small> </div> </div> </div> </div>');
+                                $("#listPrivate").append('<div class="col-md-4"> <div class="card mb-4 box-shadow"> <img class="card-img-top" src="img/evento.jpg"> <div class="card-body"> <p class="card-text">' + data.Replies[i].Title + '</p> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Description + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateEvent + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Place + '</small> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <div class="btn-group"> <button id="' + (i) + '" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button> </div> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateCreation + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Creator + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small id = "L' + (i) + '" class="text-muted" style="text-align:justify">' + data.Replies[i].Id + '</small> </div> </div> </div> </div>');
                                 i++;
                             }
                             $("#stateLoadEvents").text("");
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+            }
+        );
+
+        $("#listPrivate").on("click", ".btn",
+
+            function ()
+            {
+                var id = $(this).attr("id");
+                var idUserEvent = parseInt($("#L" + id).text());
+                alert(idUserEvent);
+
+                $.ajax
+                (
+                    {
+                        url: '../api/eventuser$id=' + idUserEvent,
+                        type: 'PUT',
+                        contentType: "application/json;charset=utf-8",
+                        success:
+                        function (data)
+                        {
+                            if (data.Status)
+                            {
+                                alert("Aceptado correctamente!");
+                            }
+
+                            else
+                            {
+                            }
                         },
 
                         error:
