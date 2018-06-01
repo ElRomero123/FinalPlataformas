@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Linq;
 using M = TheMeeting.Models;
 using O = TheMeeting.ORM;
-using System;
 
 namespace TheMeeting.Controllers
 {
@@ -22,7 +21,7 @@ namespace TheMeeting.Controllers
 
             var result = from eu in dataBase.EventUsers
                          where (eu.IdUserInvited == id)
-                         select new { eu.Id, eu.IdEvent };
+                         select new {eu.Id, eu.IdEvent};
 
             M.ReplyEventUser[] replies = new M.ReplyEventUser[result.ToArray().Length];
 

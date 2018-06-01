@@ -335,6 +335,7 @@
             {
                 var id = $(this).attr("id");
                 var idUserEvent = parseInt($("#L" + id).text());
+                alert(idUserEvent);
 
                 var parameters =
                     {
@@ -395,6 +396,50 @@
 
                         }
                     }
+                );
+            }
+        );
+
+        $("#showEventsPresence").click
+        (
+            function ()
+            {
+                var idUserString = $("#resultId").text();
+                var idUser = parseInt(idUserString);
+
+                $.ajax
+                (
+                   {
+                        url: '../api/eventuserattended?id=' + idUser,
+                        type: 'GET',
+                        contentType: "application/json;charset=utf-8",
+
+                        success:
+                        function (data)
+                        {
+                            $("#listEventsPresence").empty();
+
+                            var i = 0;
+                            while (i < data.SizeEvents)
+                            {
+                                $("#listEventsPresence").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].InfoEvent[0] + ' ' + data.Events[i].InfoEvent[1] + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].InfoEvent[2] + '</h5> <p class="card-text">' + data.Events[i].InfoEvent[3] + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].InfoEvent[4] + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].InfoEvent[5] + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
+                                var j = 0;
+                                while (j < data.UsersPerEvent[i])
+                                {
+                                    $("#listEventsPresence").append('<div>aaaa</div>');
+                                    j++;
+                                }
+                                
+                            }
+                                     
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                   }
                 );
             }
         );
