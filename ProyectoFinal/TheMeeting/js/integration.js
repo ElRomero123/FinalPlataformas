@@ -6,12 +6,13 @@
             function ()
             {
                 $("#state").text("Registrando usuario... Espere un momento. ");
+                
 
                 var user =
                 {
                     name:       $("#names").val(),
                     lastName:   $("#lastName").val(),
-                    sex:        0,
+                    sex:        $('input:radio[name=optionsGender]:checked').val(),
                     username:   $("#userid").val(),
                     password:   $("#password").val(),
                     phone:      $("#phone").val(),
@@ -31,6 +32,8 @@
                         {
                             if (data.Status)
                             {
+                                $("#state").removeClass("badge badge-pill badge-warning");
+                                $("#state").addClass("badge badge-pill badge-success");
                                 $("#state").text("El usuario ha sido registrado con éxito. ");
                             }
 
@@ -70,6 +73,8 @@
                         success:
                         function (data)
                         {
+                            $("#loginStatus").removeClass("badge badge-pill badge-warning");
+                            $("#loginStatus").addClass("badge badge-pill badge-success");
                             $("#loginStatus").text("Validación correcta. Revisar en el panel superior. ");
                             $("#titleUser").text("Información de usuario ");
                             $("#resultName").text(data.Name + " " + data.LastName);
@@ -121,6 +126,8 @@
                         {
                             if (data.Status)
                             {
+                                $("#stateCreation").removeClass("badge badge-pill badge-warning");
+                                $("#stateCreation").addClass("badge badge-pill badge-success");
                                 $("#stateCreation").text("Se ha creado un evento con éxito. ");
                             }
                         },

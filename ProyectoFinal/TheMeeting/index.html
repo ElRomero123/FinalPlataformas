@@ -32,7 +32,7 @@
 
           <nav class="navbar navbar-light bg-light">
               <div class="form-group">
-                  <small id="stateLoadEvents" class="form-text text-muted"></small>
+                  <span id="stateLoadEvents" class="badge badge-pill badge-warning"></span>
                   <div class="card border-secondary mb-3" style="max-width: 18rem;">
                       <div class="card-header" id="titleUser"></div>
                       <div class="card-body text-secondary">
@@ -76,7 +76,7 @@
 
                               <div class="form-group">
                                   <button id="login" type="submit" class="btn btn-outline-info my-2 my-sm-0">Iniciar sesión</button>
-                                  <small id="loginStatus" class="form-text text-muted"></small>
+                                  <span id="loginStatus" class="badge badge-pill badge-warning"></span>
                               </div>
                           </div>
                       </div>
@@ -121,18 +121,18 @@
                                   </div>
 
                                   <div class="form-group">
-                                      <label for="lastName">Sexo</label>
+                                      <label>Sexo</label>
                                       <br />
 
                                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                           <label class="btn btn-outline-primary">
-                                              <input type="radio" name="options" id="male" autocomplete="off"> Masculino
+                                              <input type="radio" name="optionsGender" value="0" autocomplete="off"> Masculino
                                           </label>
                                           <label class="btn btn-outline-danger">
-                                              <input type="radio" name="options" id="female" autocomplete="off"> Femenino
+                                              <input type="radio" name="optionsGender" value="1" autocomplete="off"> Femenino
                                           </label>
                                           <label class="btn btn-outline-dark">
-                                              <input type="radio" name="options" id="undefined" autocomplete="off"> NO definir
+                                              <input type="radio" name="optionsGender" value="2" autocomplete="off"> NO definir
                                           </label>
                                       </div>
 
@@ -189,7 +189,9 @@
                                   <div class="form-group">
                                       <button id="send" type="submit" class="btn btn-outline-info my-2 my-sm-0">Enviar y confirmar registro</button>
                                       <small class="form-text text-muted">Se debe aceptar el acuerdo de licencia para enviar la información.</small>
-                                      <small id="state" class="form-text text-muted"></small>
+                                      <small  class="form-text text-muted"></small>
+                                      <span id="state" class="badge badge-pill badge-warning"></span>
+
                                   </div>
 
                               </div>
@@ -267,7 +269,7 @@
 
                                   <div class="form-group">
                                       <button id="sendEvent" type="submit" class="btn btn-outline-info my-2 my-sm-0">Crear</button>
-                                      <small id="stateCreation" class="form-text text-muted"></small>
+                                      <span id="stateCreation" class="badge badge-pill badge-warning"></span>
                                   </div>
 
                                   <div class="form-group">
