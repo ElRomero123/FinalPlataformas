@@ -272,7 +272,48 @@
                             var i = 0;
                             while (i < data.SizeReplies)
                             {
-                                $("#listPrivate").append('<div class="col-md-4"> <div class="card mb-4 box-shadow"> <img class="card-img-top" src="img/evento.jpg"> <div class="card-body"> <p class="card-text">' + data.Replies[i].Title + '</p> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Description + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateEvent + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Place + '</small> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <div class="btn-group"> <button id="' + (i) + '" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Mas información</button> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Aceptar invitación</button> </div> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateCreation + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Creator + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small id = "L' + (i) + '" class="text-muted" style="text-align:justify">' + data.Replies[i].Id + '</small> </div> </div> </div> </div>');
+                                $("#listPrivate").append('<div class="col-md-4"> <div class="card mb-4 box-shadow"> <img class="card-img-top" src="img/evento.jpg"> <div class="card-body"> <p class="card-text">' + data.Replies[i].Title + '</p> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Description + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateEvent + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Place + '</small> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <div class="btn-group"> <button id="' + (i) + '" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Aceptar invitación</button> </div> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateCreation + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Creator + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small id = "L' + (i) + '" class="text-muted" style="text-align:justify">' + data.Replies[i].Id + '</small> </div> </div> </div> </div>');
+                                i++;
+                            }
+                            $("#stateLoadEvents").text("");
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+            }
+        );
+
+
+        $("#publicEvents").click
+        (
+            function ()
+            {
+                $("#stateLoadEvents").removeClass("badge badge-pill badge-success");
+                $("#stateLoadEvents").addClass("badge badge-pill badge-warning");
+                $("#stateLoadEvents").text("Cargando eventos ...");
+                var idUserString = $("#resultId").text();
+                var idUser = parseInt(idUserString);
+
+                $.ajax
+                (
+                    {
+                        url: '../api/eventusertwo?id=' + idUser,
+                        type: 'GET',
+                        contentType: "application/json;charset=utf-8",
+
+                        success:
+                        function (data)
+                        {
+                            $("#listPublic").empty();
+                            var i = 0;
+                            while (i < data.SizeReplies)
+                            {
+                                $("#listPublic").append('<div class="col-md-4"> <div class="card mb-4 box-shadow"> <img class="card-img-top" src="img/evento.jpg"> <div class="card-body"> <p class="card-text">' + data.Replies[i].Title + '</p> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Description + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateEvent + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Place + '</small> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <div class="btn-group"> <button id="' + (i) + '" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Aceptar invitación</button> </div> </div> <br /> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].DateCreation + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small class="text-muted" style="text-align:justify">' + data.Replies[i].Creator + '</small> </div> <div class="d-flex justify-content-between align-items-center"> <small id = "L' + (i) + '" class="text-muted" style="text-align:justify">' + data.Replies[i].Id + '</small> </div> </div> </div> </div>');
                                 i++;
                             }
                             $("#stateLoadEvents").text("");
@@ -294,27 +335,60 @@
             {
                 var id = $(this).attr("id");
                 var idUserEvent = parseInt($("#L" + id).text());
-                alert(idUserEvent);
+
+                var parameters =
+                    {
+                        idUserEvent: parseInt($("#L" + id).text()),
+                        isAcepted: 1
+                    }
 
                 $.ajax
                 (
                     {
-                        url: '../api/eventuser$id=' + idUserEvent,
+                        url: '../api/eventuser',
                         type: 'PUT',
+                        data: JSON.stringify(parameters),
                         contentType: "application/json;charset=utf-8",
                         success:
                         function (data)
                         {
-                            if (data.Status)
-                            {
-                                alert("Aceptado correctamente!");
-                            }
-
-                            else
-                            {
-                            }
+                            alert(data);
                         },
+                        error:
+                        function ()
+                        {
 
+                        }
+                    }
+                );
+            }
+        );
+
+        $("#listPublic").on("click", ".btn",
+
+            function ()
+            {
+                var id = $(this).attr("id");
+                var idUserEvent = parseInt($("#L" + id).text());
+
+                var parameters =
+                    {
+                        idUserEvent: parseInt($("#L" + id).text()),
+                        isAcepted: 1
+                    }
+
+                $.ajax
+                (
+                    {
+                        url: '../api/eventuser',
+                        type: 'PUT',
+                        data: JSON.stringify(parameters),
+                        contentType: "application/json;charset=utf-8",
+                        success:
+                        function (data)
+                        {
+                            alert(data);
+                        },
                         error:
                         function ()
                         {

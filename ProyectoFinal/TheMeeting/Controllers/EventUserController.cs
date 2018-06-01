@@ -69,6 +69,9 @@ namespace TheMeeting.Controllers
             return reply;
         }
 
+
+        
+
         public M.Reply Post(M.ParametersEventUser parameters)
         {
             M.Reply reply = new M.Reply
@@ -106,8 +109,11 @@ namespace TheMeeting.Controllers
             return reply;   
         }
 
-        public bool Put(int id)
+        public bool Put(M.ParamsPutUserEvent parameters)
         {
+            O.EventUser eventoUsuario = dataBase.EventUsers.FirstOrDefault(x => x.Id == parameters.IdUserEvent);
+            eventoUsuario.IsAcepted = parameters.IsAcepted;
+            dataBase.SaveChanges();
             return true;
         }
 
