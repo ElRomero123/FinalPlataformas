@@ -60,9 +60,9 @@ namespace TheMeeting.Controllers
                 reply.Status = true;
             }
 
-            catch(Exception ex)
+            catch
             {
-                throw ex;
+                reply.Status = false;
             }
 
             return reply;

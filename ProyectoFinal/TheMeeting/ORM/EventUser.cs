@@ -18,6 +18,7 @@ namespace TheMeeting.ORM
         public int IdUserInvited { get; set; }
         public int IdEvent { get; set; }
         public int IsAcepted { get; set; }
+        public int Attended { get; set; }
     
         public virtual Event Event { get; set; }
         public virtual User User { get; set; }

@@ -95,7 +95,6 @@
     <Content Include="Global.asax" />
     <Content Include="img\evento.jpg" />
     <Content Include="img\reunion.ico" />
-    <Content Include="img\user.png" />
     <Content Include="index.html" />
     <Content Include="js\integration.js" />
     <Content Include="ORM\DB.Context.tt">

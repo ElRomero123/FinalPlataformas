@@ -26,6 +26,7 @@
           <Property Name="IdUserInvited" Type="int" Nullable="false" />
           <Property Name="IdEvent" Type="int" Nullable="false" />
           <Property Name="IsAcepted" Type="int" Nullable="false" />
+          <Property Name="Attended" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -123,6 +124,7 @@
           <Property Name="IdUserInvited" Type="Int32" Nullable="false" />
           <Property Name="IdEvent" Type="Int32" Nullable="false" />
           <Property Name="IsAcepted" Type="Int32" Nullable="false" />
+          <Property Name="Attended" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_EventUser_Event" FromRole="EventUser" ToRole="Event" />
           <NavigationProperty Name="User" Relationship="Self.FK_EventUser_User" FromRole="EventUser" ToRole="User" />
         </EntityType>
@@ -223,6 +225,7 @@
                 <ScalarProperty Name="IdUserInvited" ColumnName="IdUserInvited" />
                 <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
                 <ScalarProperty Name="IsAcepted" ColumnName="IsAcepted" />
+                <ScalarProperty Name="Attended" ColumnName="Attended" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
