@@ -253,7 +253,7 @@
             {
                 var value = $(this).attr("value");
                 var idEvent = parseInt($("#L" + value).text());
-                alert(idEvent);
+                //alert(idEvent);
 
                 
                 $.ajax
@@ -270,8 +270,11 @@
                             var i = 0;
                             while (i < data.SizeUsers)
                             {
-                                alert("Usuario: " + data.Users[i].Username + " Nombre: " + data.Users[i].Name + " " + data.Users[i].LastName + " Acepto invitación: " + data.Users[i].IsAcepted);
-                                //$("#containerUsers").append('<div>' + data.Users[i]. + '</div>');
+                                //alert("Usuario: " + data.Users[i].Username + " Nombre: " + data.Users[i].Name + " " + data.Users[i].LastName + " Acepto invitación: " + data.Users[i].IsAcepted);
+
+                                alert(parseInt(data.Users[i].isAcepted));
+
+                                $("#containerUsers").append('<p class="card-text">' + data.Users[i].Username + '</p> <small class="form-text text-muted">' + data.Users[i].Name + ' ' + data.Users[i].LastName + '</small> <small class="form-text text-muted">' + data.Users[i].Phone + '</small> <small class="form-text text-muted">' + data.Users[i].Email + '</small> <small class="form-text text-muted"> ' + data.Users[i].isAcepted + '</small> <button type = "button" id="' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Asistió al evento.</button> <div> ---------- </div>');
                                 i++;
                             }
                         },
