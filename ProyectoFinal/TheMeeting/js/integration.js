@@ -178,7 +178,7 @@
                             {
                                 if (data.Events[i].IsPublic == 0)
                                 {
-                                    $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].Id + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
+                                    $("#listEvents").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].Place + ' ' + data.Events[i].Date + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].Name + '</h5> <p class="card-text">' + data.Events[i].Description + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> <button type = "button" value = "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Ver invitaciones.</button> </div> <div class="card-footer text-muted">' + data.Events[i].DateCreation + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].Id + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> <div id = "containerUsers" class="card-footer text-muted"> </div> </div> <br/>');
                                 }
 
                                 else
@@ -244,6 +244,46 @@
                         }
                     }
                 );
+            }
+        );
+
+        $("#listEvents").on("click", ".btn",
+
+            function ()
+            {
+                var value = $(this).attr("value");
+                var idEvent = parseInt($("#L" + value).text());
+                alert(idEvent);
+
+                
+                $.ajax
+                (
+                    {
+                        url: '../api/confirmedusers?id=' + idEvent,
+                        type: 'GET',
+                        contentType: "application/json;charset=utf-8",
+
+                        success:
+                        function (data)
+                        {
+                            $("#containerUsers").empty();
+                            var i = 0;
+                            while (i < data.SizeUsers)
+                            {
+                                alert("Usuario: " + data.Users[i].Username + " Nombre: " + data.Users[i].Name + " " + data.Users[i].LastName + " Acepto invitación: " + data.Users[i].IsAcepted);
+                                //$("#containerUsers").append('<div>' + data.Users[i]. + '</div>');
+                                i++;
+                            }
+                        },
+
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+               
             }
         );
 
@@ -337,6 +377,7 @@
                 var idUserEvent = parseInt($("#L" + id).text());
                 alert(idUserEvent);
 
+                
                 var parameters =
                     {
                         idUserEvent: parseInt($("#L" + id).text()),
@@ -396,50 +437,6 @@
 
                         }
                     }
-                );
-            }
-        );
-
-        $("#showEventsPresence").click
-        (
-            function ()
-            {
-                var idUserString = $("#resultId").text();
-                var idUser = parseInt(idUserString);
-
-                $.ajax
-                (
-                   {
-                        url: '../api/eventuserattended?id=' + idUser,
-                        type: 'GET',
-                        contentType: "application/json;charset=utf-8",
-
-                        success:
-                        function (data)
-                        {
-                            $("#listEventsPresence").empty();
-
-                            var i = 0;
-                            while (i < data.SizeEvents)
-                            {
-                                $("#listEventsPresence").append('<div class="card text-center"> <div class="card-header">' + data.Events[i].InfoEvent[0] + ' ' + data.Events[i].InfoEvent[1] + '</div> <div class="card-body"> <h5 class="card-title">' + data.Events[i].InfoEvent[2] + '</h5> <p class="card-text">' + data.Events[i].InfoEvent[3] + '</p> <input id = "I' + (i) + '" class="form-control" placeholder="Especificar el username"> <br /> <button type = "button" id= "' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Invitar usuario.</button> </div> <div class="card-footer text-muted">' + data.Events[i].InfoEvent[4] + '</div> <div id = "L' + (i) + '" class="card-footer text-muted">' + data.Events[i].InfoEvent[5] + '</div> <div id = "S' + (i) + '" class="card-footer text-muted"> </div> </div> <br/>');
-                                var j = 0;
-                                while (j < data.UsersPerEvent[i])
-                                {
-                                    $("#listEventsPresence").append('<div>aaaa</div>');
-                                    j++;
-                                }
-                                
-                            }
-                                     
-                        },
-
-                        error:
-                        function ()
-                        {
-
-                        }
-                   }
                 );
             }
         );

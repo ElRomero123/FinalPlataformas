@@ -68,9 +68,6 @@ namespace TheMeeting.Controllers
             return reply;
         }
 
-
-        
-
         public M.Reply Post(M.ParametersEventUser parameters)
         {
             M.Reply reply = new M.Reply

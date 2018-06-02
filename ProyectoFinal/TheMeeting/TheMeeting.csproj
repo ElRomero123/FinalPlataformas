@@ -111,8 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConfirmedUsersController.cs" />
     <Compile Include="Controllers\EventController.cs" />
-    <Compile Include="Controllers\EventUserAttendedController.cs" />
     <Compile Include="Controllers\EventUserController.cs" />
     <Compile Include="Controllers\EventUserTwoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -120,16 +120,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Credential.cs" />
-    <Compile Include="Models\EntityReplyUserAttended.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventUser.cs" />
     <Compile Include="Models\InfoRepliesEventUser.cs" />
     <Compile Include="Models\ParametersEventUser.cs" />
     <Compile Include="Models\ParamsPutUserEvent.cs" />
     <Compile Include="Models\Reply.cs" />
+    <Compile Include="Models\ActiveUser.cs" />
+    <Compile Include="Models\ReplyActiveUsers.cs" />
     <Compile Include="Models\ReplyEvent.cs" />
     <Compile Include="Models\ReplyEventUser.cs" />
-    <Compile Include="Models\ReplyEventUserAttended.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ORM\DB.Context.cs">
       <AutoGen>True</AutoGen>
