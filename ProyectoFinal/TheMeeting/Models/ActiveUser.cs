@@ -2,6 +2,7 @@
 {
     public class ActiveUser
     {
+        public int Id { get; set; }
         public int IdUserInvited { get; set; }
         public int IsAcepted { get; set; }
         public string Name { get; set; }

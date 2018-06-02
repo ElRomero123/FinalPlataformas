@@ -274,7 +274,7 @@
 
                                 alert(parseInt(data.Users[i].isAcepted));
 
-                                $("#containerUsers").append('<p class="card-text">' + data.Users[i].Username + '</p> <small class="form-text text-muted">' + data.Users[i].Name + ' ' + data.Users[i].LastName + '</small> <small class="form-text text-muted">' + data.Users[i].Phone + '</small> <small class="form-text text-muted">' + data.Users[i].Email + '</small> <small class="form-text text-muted"> ' + data.Users[i].isAcepted + '</small> <button type = "button" id="' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Asistió al evento.</button> <div> ---------- </div>');
+                                $("#containerUsers").append('<p class="card-text">' + data.Users[i].Username + '</p> <small class="form-text text-muted">' + data.Users[i].Name + ' ' + data.Users[i].LastName + '</small> <small class="form-text text-muted">' + data.Users[i].Phone + '</small> <small class="form-text text-muted">' + data.Users[i].Email + '</small> <small class="form-text text-muted"> ' + data.Users[i].isAcepted + '</small> <small id = "L' + (i) + '" class="form-text text-muted"> ' + data.Users[i].Id + '</small> <button type = "button" id="' + (i) + '" class="btn btn-outline-info my-2 my-sm-0">Asistió al evento.</button> <div> ---------- </div>');
                                 i++;
                             }
                         },
@@ -441,6 +441,44 @@
                         }
                     }
                 );
+            }
+        );
+
+        $("#containerUsers").on("click", ".btn",
+
+            function ()
+            {
+                var id = $(this).attr("id");
+                var idUserEvent = parseInt($("#L" + id).text());
+                alert(idUserEvent);
+
+                /*
+                var parameters =
+                {
+                    id: idUserEvent,
+                    is
+                }
+
+                $.ajax
+                (
+                    {
+                        url: '../api/eventuser',
+                        type: 'PUT',
+                        data: JSON.stringify(parameters),
+                        contentType: "application/json;charset=utf-8",
+                        success:
+                        function (data)
+                        {
+                            alert(data);
+                        },
+                        error:
+                        function ()
+                        {
+
+                        }
+                    }
+                );
+                */
             }
         );
     }

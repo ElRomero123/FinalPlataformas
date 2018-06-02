@@ -12,7 +12,7 @@ namespace TheMeeting.Controllers
         {
             var query1 = from e in dataBase.EventUsers
                          where (e.IdEvent == id)
-                         select new { e.IdUserInvited, e.IsAcepted, e.User.Username, e.User.Name, e.User.LastName, e.User.Sex, e.User.Phone, e.User.Email};
+                         select new { e.Id, e.IdUserInvited, e.IsAcepted, e.User.Username, e.User.Name, e.User.LastName, e.User.Sex, e.User.Phone, e.User.Email};
 
             M.ActiveUser[] users = new M.ActiveUser [query1.ToArray().Length];
 
@@ -21,6 +21,7 @@ namespace TheMeeting.Controllers
             {
                 M.ActiveUser user = new M.ActiveUser
                 {
+                    Id = item.Id,
                     IdUserInvited = item.IdUserInvited,
                     IsAcepted = item.IsAcepted,
                     Name = item.Name,
